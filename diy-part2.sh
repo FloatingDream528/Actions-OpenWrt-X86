@@ -18,6 +18,4 @@ rm -rf package/lean/luci-lib-docker
 #添加额外软件包
 git clone https://github.com/lisaac/luci-lib-docker.git package/lean/luci-lib-docker
 #自定义设置
-mkdir -p files/etc/openclash/core
-tar -zxvf feeds/OpenClash/core-lateset/dev/clash-linux-amd64.tar.gz -C files/etc/openclash/core
 sed -i -e '32d;39d;40d' package/lean/default-settings/files/zzz-default-settings
