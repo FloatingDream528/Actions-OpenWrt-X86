@@ -18,4 +18,4 @@ rm -rf package/lean/luci-lib-docker
 #添加额外软件包
 git clone https://github.com/lisaac/luci-lib-docker.git package/lean/luci-lib-docker
 #自定义设置
-sed -i -e '32d' package/lean/default-settings/files/zzz-default-settings
+sed -i '32d' package/lean/default-settings/files/zzz-default-settings
