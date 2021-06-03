@@ -20,3 +20,4 @@ git clone https://github.com/lisaac/luci-lib-docker.git package/lean/luci-lib-do
 svn co https://github.com/openwrt/luci/trunk/applications/luci-app-sqm
 #自定义设置
 sed -i '32d' package/lean/default-settings/files/zzz-default-settings
+sed -i 's/hd0/hd1/g' package/boot/grub2/files/grub-early.cfg
