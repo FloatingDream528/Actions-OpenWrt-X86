@@ -13,9 +13,8 @@
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
-#移除不用软件包
-rm -rf package/lean/luci-lib-docker
 #添加额外软件包
-git clone https://github.com/lisaac/luci-lib-docker.git package/lean/luci-lib-docker
-#自定义设置
-sed -i '5d' package/system/opkg/files/opkg-smime.conf
+git clone https://github.com/kongfl888/luci-app-adguardhome.git package/luci-app-adguardhome
+svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+git clone https://github.com/fw876/helloworld.git package/helloworld
