@@ -5,20 +5,12 @@ config interface 'loopback'
 	option ipaddr '127.0.0.1'
 	option netmask '255.0.0.0'
 
-config globals 'globals'
-	option ula_prefix 'fd37:b364:0e52::/48'
-	option packet_steering '1'
-
 config interface 'lan'
 	option ifname 'eth0'
 	option proto 'static'
-	option ipaddr '192.168.1.2'
 	option netmask '255.255.255.0'
 	option delegate '0'
-
-config interface 'wan'
-	option ifname 'eth1'
-	option _orig_ifname 'eth1'
-	option _orig_bridge 'false'
-	option proto 'dhcp'
+	option ipaddr '192.168.1.10'
+	option gateway '192.168.1.1'
+	option dns '192.168.1.1'
 
