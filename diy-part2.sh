@@ -18,7 +18,7 @@ git clone https://github.com/kongfl888/luci-app-adguardhome.git package/luci-app
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 git clone https://github.com/fw876/helloworld.git package/helloworld
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
-svn co https://github.com/pymumu/smartdns/trunk/package/luci  package/luci-app-smartdns
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-smartdns package/luci-app-smartdns
 svn co https://github.com/pymumu/smartdns/trunk/package/openwrt package/smartdns
 #删除passwall重复组件
 rm -rf package/passwall/naiveproxy
