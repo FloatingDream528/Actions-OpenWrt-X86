@@ -19,7 +19,7 @@ svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/l
 git clone https://github.com/fw876/helloworld.git package/helloworld
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 svn co https://github.com/pymumu/smartdns/trunk/package/luci  package/smartdns/luci
-svn co https://github.com/pymumu/smartdns/tree/master/package/openwrt
+svn co https://github.com/pymumu/smartdns/trunk/package/openwrt package/smartdns/smartdns
 #删除passwall重复组件
 rm -rf package/passwall/naiveproxy
 rm -rf package/passwall/shadowsocks-rust
