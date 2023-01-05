@@ -80,15 +80,6 @@ jobs:
         echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
         echo "DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
         echo "DATE1=$(date "+%Y-%m-%d")" >> $GITHUB_ENV
-#        echo "::set-env name=useVersionInfo::$useVersionInfo"
-#        echo "::set-env name=DATE::$(date "+%Y-%m-%d %H:%M:%S")"
-
-    #- name: Load custom feeds
-    #  run: |
-    #    [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-    #    chmod +x $DIY_P1_SH
-    #    cd openwrt
-    #    ../$DIY_P1_SH
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -101,12 +92,9 @@ jobs:
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
-        chmod +x $MRG_ADD_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        $GITHUB_WORKSPACE/$MRG_ADD_SH
-        sed -i 's/OpenWrt/MRG AutoBuild ${{ env.DATE1 }} @ OpenWrt/g' package/lean/default-settings/files/zzz-default-settings
-        
+
 #     - name: SSH connection to Actions
 #       uses: P3TERX/debugger-action@master
 #       if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
@@ -119,8 +107,6 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-#   - name: patch
-#     run: cp -rf $GITHUB_WORKSPACE/x86_64/5_15_patches/* openwrt/
 
     - name: Compile the firmware
       id: compile
@@ -132,8 +118,6 @@ jobs:
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
-#        [ -s DEVICE_NAME ] && echo "::set-env name=DEVICE_NAME::_$(cat DEVICE_NAME)"
-#        echo "::set-env name=FILE_DATE::_$(date +"%Y%m%d%H%M")"
 
     - name: Check performance again
       run: |
@@ -171,7 +155,6 @@ jobs:
         rm -rf packages config.buildinfo feeds.buildinfo sha256sums version.buildinfo *.manifest Packages.tar.gz
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
-#        echo "::set-env name=FIRMWARE::$PWD"
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@master
