@@ -14,4 +14,5 @@
 sed -i 's/192.168.1.1/192.168.1.5/g' package/base-files/files/bin/config_generate
 
 #添加额外软件包
-svn co https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/luci-app-mosdns
+find ./ | grep Makefile | grep mosdns | xargs rm -f
+git clone https://github.com/sbwml/luci-app-mosdns package/mosdns
